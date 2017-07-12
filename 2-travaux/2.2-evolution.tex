@@ -1,0 +1,31 @@
+Les évolutions sont les fonctionnalités que le client souhaite ajouter à Mosaïque. Pour cela, il fournit une spécification fonctionnelle de laquelle un des membres de l'équipe va tirer une Conception Technique Détaillée (CTD). Je décrirais plus en détail le processus amenant jusqu'à la production de ces CTD dans la seconde partie de ce rapport.
+
+Étant donné mon statut de nouvel arrivant, je n'ai pas eu l'occasion d'effectuer beaucoup d'évolutions et les CTD m'étaient fournis à chaque fois. En effet, les nouveaux arrivant doivent passer par une période uniquement dédiée à la correction d'anomalie. Cela lui permet de découvrir le code et le fonctionnement général de l'application qui est tentaculaire et donc impossible à appréhender de front.
+
+Durant cette année j'ai effectué trois évolutions, toutes les trois très particulières et intéressantes.
+
+\subsection{Modification simple d'IHM}
+
+    S'agissant de ma toute première évolution, elle est très simple. Le but était de faire évoluer un ensemble d'IHM. Les labels devant les champs de texte d'adresse devaient être modifiés suite à un changement d'application de gestion des clients. La grosse difficulté résidait dans le fait que l'IHM à modifier était massivement réutilisée dans l'application dans différents contextes. Le plus gros de l'évolution résidait donc dans la rédaction exhaustive de cas tests couvrant tous les cas possibles. Cela m'a permis de découvrir en douceur le processus de développement, ce qui s’est avéré très utile pour l'évolution suivante. En effet, le développement suit un processus très strict afin de suivre l'avancement de la fonctionnalité.
+
+\subsection{La boîte à outils}
+
+    Après une première évolution simple, mais riche en apprentissages des méthodes et processus de développement, on m'a confié cette seconde évolution qui concerne une application en marge de Mosaïque : la boîte à outils.
+    
+    Il s'agit d'un composant enfichable pour la Console de Maintenance Windows. Son but est de permettre aux mainteneurs et installateurs de Mosaïque d’effectuer différentes actions et différents tests sur le poste de vente, possiblement à distance. Notamment, mon évolution portait sur la rénovation des tests de périphériques. Ceux-ci sont censés permettre de vérifier l’installation et la configuration des nombreux périphériques reliés au poste de vente. Le problème était que ces tests n'avaient pas évolué en même temps que Mosaïque était donc devenu obsolète. La SNCF souhaitant mettre a jour la version de Windows sur son parc, il nous à été demandé d'adapter les tests pour qu'ils soient de nouveaux fonctionnels.
+    
+    L'intérêt de cette évolution résidait dans le fait que la boîte à outils soit séparée de l'application Mosaïque et que la connaissance à son sujet a été perdue. Cela m'a donné une grande autonomie dans mon développement et m'a forcé à trouver par mois même aux questions que je me posais. Un second effet est que j'ai dû gérer mon propre planning. 8 jours m'ont été donnés pour réaliser cette évolution, et c'était à moi de décider de la répartition de ce temps entre les différentes tâches à effectuer. Notamment, il fallait que je capitalise les informations que je découvrais dans le Wiki de l’équipe afin de retrouver les connaissances sur ce sujet. 
+    
+    Ce fut très intéressant et j'ai pu appréhender les problématiques de répartition du temps. Il m'a fallu faire des compromis et des choix afin de respecter les délais. Notamment, j'ai dû prendre la responsabilité de supprimer une fonctionnalité au départ prévue et rogner sur la capitalisation des connaissances. J'ai ensuite pu rattraper mon retard sur la rédaction du Wiki en consommant de la MCO.
+    
+\subsection{Gestion des clients T}
+    
+    Suite à un oubli dans les spécifications, le client nous à demandé en urgence une évolution concernant des clients spéciaux dont les coordonnées doivent être cachées.
+    
+    Depuis quelques versions, nous développons l'intégration d'un nouveau système de gestion de client. Il s'agit d'une volonté de la SNCF de regrouper toutes les données client dans un même système plutôt que chaque application gère une base de client interne. Il s'agit du Registre Client Unique (RCU) appelé Émeraude.
+    
+    La mise en production de cette intégration devait avoir lieu sous peu lorsque le client s'est rendu compte d'un oubli. Les "clients T" sont des clients spéciaux (ministres, juges, célébrités...) dont les coordonnés ne doivent pas être affichés aux vendeurs. Le comportement de Mosaïque lors de l'apparition de ce type de client à travers Émeraude n'a pas été spécifié et donc pas développé. Seulement, il n'était pas envisageable pour le client de lancer en production une version avec un tel problème.
+    
+    Nous avons donc outrepassé le processus de développement habituel en faisant venir l'équipe Recette du client directement dans nos locaux pour faire les tests. Il pouvait alors nous faire directement leurs retours et nous expliquer avec exactitude leurs attentes.
+    
+    Ce fut très intéressant, car cette évolution a été réalisée en pseudo-mode agile. De plus, le client a été extrêmement satisfait de notre réactivité et l'expérience de faire venir la Recette directement sur le plateau de développement pourrait bien se reproduire.

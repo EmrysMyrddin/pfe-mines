@@ -1,0 +1,33 @@
+Pour rappel, le pôle Mosaïque est compris dans le périmètre Distribution du centre de service Distribution/Transport.
+
+Le pôle est divisé en 3 équipes :
+
+\begin{itemize}
+    \item Développement : C'est léquipe qui réalise concretement les développement. C'est également à elle que reviens la tâche de chiffrer les demande du client, rédiger les devis, valider les SFG avec le client et écrire la conception technique détailé qui en découle. Les développeurs sont également en charge d'écrire et d'effectuer les "tests unitaires" concernant leurs développements. 
+    \item Homologation : C'est l'équipe en charge des tests. Ce sont eux qui, à partir des spécifications, rédige les plans de tests fonctionnels qui servirons à valider les développements. Ils n'ont pas connaissance du code mais sont les référents en matière de connaissances fonctionnelles du métier.
+    \item Intégration : Cette dernière équipe se charge des compilations, des gestes technique, de l'installation et du maintient de la platefrome d'homologation et de l'infrastructure technique du pôle. Ce sont également eux qui se charge de la confection des package de version livrés au client.
+\end{itemize}
+
+Les équipes sont bien distinct mais une très bonne communication règne au seins du pôle. Un "DSTUM" (pour Dayli Stand Up Meeting) est organisé tous les matin. Il s'agit d'un réunion d'une quinzaine de minutes où tout le pôle est convié. Chaqu'un y évoque sont avancement ou ses dificulté, exprime les tâche qu'il doit faire et fait remonté les informations importantes. Ainsi, toute l'équipe est toujours au courant de ce qu'il se passe sur le pôle.
+
+\subsection{Processus d'évolution de l'application}
+
+    L'application Mosaïque est dans une phase de maintenance évolutive. Cela signifie que le pôle Mosaïque a la charge de maintenir le fonctionnement de l'application tout en la faisant évoluer en intégrant les nouveaux besoins du client.
+    
+    Pour faire évoluer l'application, le client commence par rédiger une Description du Besoin. Cette description nous sert à faire une première évaluation de l'impacte, du temps de développement et du coup de cette évolution. Le client peux alors éventuellement revoir ces attentes afin de mieux collé à son planning.
+    
+    Le client nous fait ensuite parvenir les Spécifications Fonctionelles Générales de l'évolution. C'est une derscription exhaustive des tâche que le client souhaite voir réaliser dans le cadre cette évolution. Cela se présente en un ensemble de règle de gestion nommé afin de pouvoir y faire référence plus tard. Ces SFG sont relus par un membre de l'équipe de Développement qui produit alors un chiffrage détaillé. Il attribut à chaque règle de gestion un cout en fonction de son impacte sur le code. Ce chiffrage est ensuite intégré dans un devis qui est envoyé au client pour validation.
+    
+    Une phase de négociation géré par le chef d'équipe s'amorce alors. Le devis va faire des allez-retours entre le client et notre équipe jusqu'à ce qu'un accord soit validé.
+    
+    Le développement est alors prévu dans une version précise et une personne se charge de les réaliser tandis que l'homologation ajoute des tests à son plan de test.
+    
+    Lorsque le développement est terminé, le développeur doit rédiger ses "test unitaires". Il ne s'agit pas réellement de test unitaire puisque l'application n'est pas réellement testable unitairement. Il s'agit donc de scénario à suivre pour tester la fonctionnalité développé. Les tests sont sensé couvrir toutes les règles de gestion. Le but de cette étape est d'effectuer une première vérification et écarter les erreurs triviales pour ne par faire perdre de temps à l'équipe d'homologation qui à toujours un planning des plus chargé.
+    
+    Lorsque tous les test unitaires sont passés, les développeur livre alors sur le "stream" de la version cible de l'évolution son développement. En effet, l'équipe développe toujours plusieurs version en simultané. Il existe donc des "streams" bien séparé pour chaque version. Un stream est un espace qui contient l'état du code. Le code peux alors évoluer dans cet espace sans impacter le code contenu sur les autres streams. Cela permet de garder les versions bien séparés. Les modifications apportées sur le stream d'une version sont ensuite reporté sur le stream de la version suivante lorsqu'elle est définitivement livrée.
+    
+    L'intégration peux donc compiler le code du stream corespondant à la version ciblée et installé cette nouvelle mouture de l'application sur les postes d'homologation.
+    
+    C'est alors au tour de l'homologation de faire ces tests. Pendant ce temps l'équipe Développement va continuer les évolutions et corriger les Fait Technique remontés par l'homologation.
+    
+    C'est l'homologation qui choisis quand l'application peut être packagé par l'équipe d'intégration. Le package, munis d'un document expliquant les gestes techniques à effectuer pour cette version, est livré à l'équipe de Recette du client. Sur place, le pôle Intégration Système reçois le package et l'installe chez le client. Intégration Système est un pôle transverse aux deux périmètre Distribution et Transport du centre de service. Ils s'occupent de faire l'installation et la maintenance des système chez le client. ils servent également de tampon entre le client et notre pôle. Ce sont eux qui filtre dans un premier temps les anomalies remontées par le client. Ils les aiguilles vers les bonne équipes pour ne nous renvoyé que celle concernant une anomalie de code. Toutes les problème lié à la configuration, la gestion des donnée ou du matériel ne nous concerne pas et sont envoyé à une autre équipe ou aux autres prestataire de la SNCF.

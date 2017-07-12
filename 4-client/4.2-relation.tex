@@ -1,0 +1,26 @@
+Face à une organisation aussi huilée et normée, les échanges entre le client et notre pôle sont donc très bien définis. Ceci étant, nos relations vont plus loin que les simples échanges décrits précédemment.
+
+\subsection{Un métier complexe}
+
+    Le métier derrière Mosaïque est d'une grande complexité. Par conséquent, beaucoup d'anomalies sont remontées malgré la double vérification en interne de la conformité des développements. En effet, les tests internes reposent sur notre compréhension des spécifications. Or, la complexité du métier ne permet pas toujours de rendre très claires les spécifications. Il nous arrive donc de mal interpréter et de développer un comportement non voulu par le client.
+    
+    La communication avec le client devient dès lors très importante afin d'affiner notre compréhension du cas de défaut relevé. Cela peut prendre beaucoup de temps et se finit bien souvent par un coup de téléphone afin d'avoir une explication en direct. 
+    
+    C'est à ce moment que peuvent survenir de légères tensions. Notre pôle va défendre son interprétation de la spécification afin de ne pas avoir à consommer de MCO pour corriger l'anomalie. De son côté, le client va vouloir défendre sa spécification pour ne pas avoir à payer une nouvelle évolution venant corriger le point flou. Un dialogue plus ou moins informel s'engage alors entre les personnes en charge de l'anomalie côté Mosaïque et côté client. En fonction de l'impact que pourrais avoir la correction, le dialogue peu parfois devenir un petit peu houleux.
+    
+    Ceci étant dit, les personnes constituant l'équipe de Recette (notre principal contact) ont de bonnes connaissances techniques et sont donc conscientes des possibles difficultés de développement auquel nous pouvons faire face.
+    
+\clearpage
+\subsection{Un client éduqué}
+
+    C'est sans doute ce point qui fait toute réussite de ce projet. Le client est très à l'aise avec les processus de production mis en place et fait l'effort de les respecter. De notre côté, nous respectons le fait que parfois, le client peut avoir changé d'avis ou qu'un souci de planning le force à revoir ces directives.
+    
+    Ceci génère une bonne collaboration qui implique une résolution efficace des incidents de parcours. Les deux partis s'entendent assez vite sur des solutions qui leur conviendront.
+    
+    L'un des freins à cette collaboration vient souvent de l'indisponibilité des systèmes externes à Mosaïque ou l'absence de donnée de test.
+    
+\subsection{Les problèmes d'entrant et de systèmes externes}
+
+    Mosaïque n'est en faites qu'une énorme interface graphique permettant d'utiliser différents systèmes externes. Notamment, le Central SNCF qui gère la vente de billets et les prix de ceux-ci doit être disponible pour effectuer la quasi-totalité des actions. Émeraude dont j'ai parlé plus tôt dans ce rapport est un autre exemple de système externe primordiale puisque sans lui, nous n'avons plus accès à la base de donnée de client. Pandore, le système de gestion sécurisé des transactions bancaires, doit être disponible pour être capable de tester les scénarios de paiement par carte bancaire. Il est très courant que l'un ou plusieurs de ces systèmes deviennent indisponibles de manière impromptue en plein milieu de développement les concernant. Il devient alors très dur pour nous de tout de même terminer l'évolution dans les temps. En effet, ces systèmes sont bien souvent trop complexes pour pouvoir simuler leur comportement.
+    
+    En plus de ces systèmes externes sur lequel nous n'avons aucun contrôle, le client est souvent lent à fournir les entrants nécessaires pour effectuer les évolutions. Ces retards sont de plus en plus fréquents ces derniers temps au point que nous recevons parfois les données de tests corrects seulement quelques jours avant la livraison. Ceci peut bouleverser énormément le planning de développement en cas de changement imprévu dans le format des données.

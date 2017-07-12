@@ -1,0 +1,274 @@
+\documentclass[twoside, 12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[left=4cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage{fancyhdr}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{glossaries}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{wrapfig}
+\usepackage{color}
+
+\usepackage{ulem}
+
+%\input{glossaire}
+
+\setcounter{secnumdepth}{5}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\titleformat{\subparagraph}
+{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+
+\pagestyle{fancy}  
+
+\renewcommand{\baselinestretch}{1.4}
+
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[C]{\textbf{Rapport de fin d'année : \textsc{Access France Sécurité}}}
+\fancyhead[RO,LE]{\scriptsize document confidentiel}
+\fancyhead[LO,RE]{}
+
+\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[LO,RE]{Valentin Cocaud}
+\fancyfoot[RO,LE]{\textbf{\thepage / \pageref{LastPage}}}
+\fancyfoot[CO,CE]{Ecole des Mines de Nantes - Filière Ingénierie Logicielle}
+
+\itshape
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+		\begin{center}
+			\textsc{\LARGE École des Mines de Nantes\\Filière Ingénierie Logicielle}\\[2cm]
+			\begin{figure}[h]
+				\begin{minipage}{0.5\textwidth}
+					\centering
+					\includegraphics[width=4cm]{img/minesNantes.png}   
+				\end{minipage}%
+				\begin{minipage}{0.5\textwidth}
+					\centering
+					\includegraphics[width=4cm]{img/itii.jpg}  
+				\end{minipage}
+			\end{figure}
+
+			\vfill
+			\HRule \\[0.4cm]
+				{\huge \bfseries Rapport de fin d'année :\\\textsc{Capgemini}\\[0.4cm] }
+			\HRule \\[2cm]
+
+			\vfill
+			\begin{minipage}{0.8\textwidth}
+				\begin{center} \large
+					{\textbf{Etudiant :}} Valentin \textsc{Cocaud}\\
+					{\textbf{Tuteur d'entreprise :}} Gilles \textsc{Chabert}\\
+					{\textbf{Maître d'apprentissage :}} Philippe \textsc{Dehoux}\\
+				\end{center}
+			\end{minipage}
+
+			\vfill
+			
+			\begin{figure}[h]
+				\begin{minipage}{1\textwidth}
+					\centering
+					\includegraphics[width=6.9cm]{img/capgemini.jpg}
+				\end{minipage}%
+			\end{figure}
+			 
+			\LaTeX
+
+			\vfill
+			{\large Année scolaire 2015 - 2016}
+		\end{center}
+	\end{sffamily}
+\end{titlepage}
+
+\vfill
+
+\thispagestyle{empty}
+\cleardoublepage
+\thispagestyle{empty}
+\input{remerciements}
+
+%\clearpage
+%\thispagestyle{empty}
+%\section*{\textbf{\underline{Résumé :}}}
+%\input{resume/fr}
+
+%\section*{\textbf{\underline{Abstract :}}}
+%\input{resume/en}
+
+\clearpage
+\thispagestyle{empty}
+\setcounter{tocdepth}{2}
+
+
+\tableofcontents
+\thispagestyle{empty}
+
+\titlecontents{section}
+	[0pc] % un peu d'espace vertical avant.
+	{}% place dans la page
+	{\textsc{\textbf{ \thecontentslabel}} \large}% mise en forme du titre.
+	{\textsc{\textbf{ \thecontentslabel}} \large} % mise en forme du titre quand il n'y a pas de label.
+	{\dotfill \contentspage}% l'espace est complété par des points, et on indique le numéro de la page
+	[\addvspace{.0001pc}]% un peu d'espace vertical après
+\thispagestyle{empty}
+
+\vfill
+{\centering
+    {\huge \textcolor{red}{Document confidentiel}}\\
+    Merci de ne pas divulguer tout ou partie de ce document\\
+}
+\vfill
+
+
+\cleardoublepage
+\setcounter{page}{1}
+\section*{\textbf{Introduction}}
+\label{sect:Introduction}
+\addcontentsline{toc}{section}{\textbf{Introduction}}
+\input{introduction}
+
+
+\part{Synthèse de la seconde année}
+
+\chapter{Présentation générale de Capgemini}
+
+    \input{1-presentation/1.0-presentation}
+    
+    \section{Histoire de l'entreprise}
+        
+        \input{1-presentation/1.1-histoire}
+    
+    \section{Les Métiers}
+    
+        \input{1-presentation/1.2-metiers}
+        
+    \section{Les Secteurs}
+    
+        \input{1-presentation/1.3-secteurs}
+    
+    \section{L'entreprise en quelques chiffres}
+    
+        \input{1-presentation/1.4-chiffres}
+        
+    \section{Capgemini France}
+    
+        \input{1-presentation/1.5-france}
+        
+    \section{Centre de service Distribution/Transporteur}
+    
+        \input{1-presentation/1.6-centreDeService}
+        
+\chapter{Présentation des travaux menés}
+    
+    \input{2-travaux/2.0-travaux}
+
+    \section{Mosaique : Tiers Maintenance Applicative}
+    
+        \input{2-travaux/2.1-tma}
+    
+    \section{Mosaique : Évolutions}
+    
+        \input{2-travaux/2.2-evolution}
+    
+    \section{Refparc3 : Montée en compétence}
+    
+        \input{2-travaux/2.3-mec}
+
+\chapter{Retour d'expérience et synthèse}
+
+    \input{3-rex/3.0-rex}
+
+    \section{Les difficultés}
+
+        \input{3-rex/3.1-dificultes}
+    
+    \section{Enseignements}
+
+        \input{3-rex/3.2-enseignements}
+    
+    \section{Synthèse}
+
+        \input{3-rex/3.3-synthese}
+
+\part{Analyse organisation et sociologique}
+
+\chapter{Organisation et relation avec un client unique}
+
+    \input{4-client/4.0-client}
+
+    \section{Organisation du projet}
+
+        \input{4-client/4.1-organisation}
+    
+    \section{Relations avec le client}
+
+        \input{4-client/4.2-relation}
+    
+    \section{Un équilibre des forces}
+
+        \input{4-client/4.3-forces}
+
+
+\cleardoublepage
+\vfill
+
+\section*{\textbf{Conclusion}}
+\label{sect:Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+
+\input{conclusion}
+
+%\cleardoublepage
+%\label{sect:Glossaire}
+%\addcontentsline{toc}{section}{Glossaire}
+%\printglossaries
+
+%\cleardoublepage
+%\section*{\textbf{Bibliographie et Webographie}}
+%\label{sect:Webographie}
+%\addcontentsline{toc}{section}{Bibliographie et Webographie}
+%\input{webographie}
+
+\listoffigures
+
+\clearpage
+  \begin{sffamily}
+		\begin{center}
+			\vfill
+				{ \huge \bfseries Rapport de fin d'année }
+			\vfill
+			\begin{minipage}{0.8\textwidth}
+				\begin{center} \large
+					Ecole des Mines de Nantes\\
+					Filière Ingénierie Logiciel\\
+					$1^{ere}$ année (2014 - 2015)\\
+				\end{center}
+			\end{minipage}
+			\vfill
+			{\large Nantes, le 31 aôut 2015}
+		\end{center}
+	\end{sffamily}
+
+\end{document}

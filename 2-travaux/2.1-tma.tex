@@ -1,0 +1,16 @@
+La Tierce Maintenance Applicative (TMA) consiste à maintenir en état de fonctionnement une application ou un système d'information.
+
+Afin d'assurer le bon fonctionnement de l'application Mosaïque, nous devons résoudre les anomalies relevées durant les différentes phases de validation des versions livrées par notre service. Chaque version produite par notre service passe par deux grandes phases de validation. 
+Dans une première phase de tests internes, l'équipe d'homologation  teste manuellement les différentes fonctionnalités et corrections d'anomalies embarquées dans le package de cette version. Des tests de non-régression automatique testant les performances et temps de réponse globaux de l'application et de ces systèmes externes sont également exécutés. De cette phase peuvent émerger des erreurs que l'on appelle Fait Technique (FT). Le temps de correction de ces FT est compris dans le temps de développement de l'évolution concernée.
+
+Dans une seconde phase de test externe cette fois-ci, l'équipe de Recette du client effectue des tests de validations. Les erreurs remontées par cette équipe sont appelées Anomalie. Pour corriger ces anomalies, nous utilisons le temps qui nous est alloué dans le contrat de TMA. Ce temps est appelé Maintenance en Conditions Opérationnelles (MCO). Il s'agit d'un forfait, c'est-à-dire que peu importe le temps consommé en MCO, le client est facturé le même prix. Il est donc important de maintenir un certain rythme de correction d'anomalie (une anomalie par jour de MCO consommé en moyenne). Le but est de réduire au maximum le temps de MCO consommé afin de ne pas perdre en rentabilité.
+
+C'est à cela que j'ai passé une bonne partie de l'année. J'ai corrigé un grand nombre d'anomalies plus ou moins complexes. Cela se déroule toujours en 3 ou 4 étapes. Tout d'abord identifier la cause de l'anomalie décrite par le client. Une fois le comportement défini, il doit être vérifié dans la spécification.
+
+À ce moment deux choix s'offrent à nous: 
+
+\begin{itemize}
+    \item le comportement est conforme aux spécifications : l’anomalie est refusée (le temps passé n'est alors pas décompté comme MCO, mais comme assistance). Cela arrive lorsque les spécifications sont incomplètes (un cas n'a pas été prévu) ou encore lorsqu'un système externe ne fonctionne pas comme il le devrait. 
+    \item le comportement n'est pas conforme aux spécifications : l’anomalie est corrigée et un cas de test est écrit afin de valider le comportement lors de la phase d'homologation interne.
+    Il peut arriver que la correction ne soit pas triviale, une étape supplémentaire apparaît alors consistant à proposer une ou plusieurs solutions afin que le client choisisse celle qui lui convient le mieux.
+\end{itemize}
