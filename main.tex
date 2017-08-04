@@ -2,6 +2,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[left=4cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+	\newcommand*{\fullref}[1]{\hyperref[{#1}]{\textit{\autoref*{#1} - \nameref*{#1}}}}
+    \def\chapterautorefname{chapitre}
+    \def\partautorefname{partie}
 \usepackage[frenchb]{babel}
 \usepackage{libertine}
 \usepackage{fancyhdr}
@@ -19,7 +23,7 @@
 
 \usepackage{ulem}
 
-%\input{glossaire}
+\input{glossaire}
 
 \setcounter{secnumdepth}{5}
 
@@ -33,21 +37,39 @@
 \titlespacing*{\subparagraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
-
-
 \pagestyle{fancy}  
 
-\renewcommand{\baselinestretch}{1.4}
+\renewcommand{\baselinestretch}{1.1}
+
+\renewcommand{\glstextformat}[1]{\dotuline{#1}}
+%\renewcommand{\glstextformat}[1]{#1*}
+%\renewcommand{\glstextformat}[1]{\color{blue!70!black}\bfseries#1}
+
+\makeatletter
+\@addtoreset{chapter}{part}
+\makeatother
+
+\renewcommand{\chaptermark}[1]{%
+\markboth{\thechapter.\ #1}{}}
 
 \renewcommand{\headrulewidth}{1pt}
-\fancyhead[C]{\textbf{Projet de fin d'étude : \textsc{Zenika}}}
-\fancyhead[RO,LE]{}
-\fancyhead[LO,RE]{}
+\fancyhead[C]{}
+\fancyhead[RO,LE]{\textbf{Projet de fin d'étude : \textsc{Zenika}}}
+\fancyhead[LO,RE]{\leftmark}
 
 \renewcommand{\footrulewidth}{1pt}
 \fancyfoot[LO,RE]{Valentin Cocaud}
 \fancyfoot[RO,LE]{\textbf{\thepage / \pageref{LastPage}}}
-\fancyfoot[CO,CE]{Ecole des Mines de Nantes - Filière Ingénierie Logicielle}
+\fancyfoot[CO,CE]{IMT Atlantique - Filière Ingénierie Logicielle}
+
+\fancypagestyle{plain}{
+	\fancyhf{} % clear all header and footer fields
+	\renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{1pt}
+    \fancyfoot[LO,RE]{Valentin Cocaud}
+    \fancyfoot[RO,LE]{\textbf{\thepage / \pageref{LastPage}}}
+    \fancyfoot[CO,CE]{IMT Atlantique - Filière Ingénierie Logicielle}
+}
 
 \itshape
 \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
@@ -59,15 +81,15 @@
 \begin{titlepage}
   \begin{sffamily}
 		\begin{center}
-			\textsc{\LARGE École des Mines de Nantes\\Filière Ingénierie Logicielle}\\[2cm]
+			\textsc{\LARGE IMT Atlantique\\Filière Ingénierie Logicielle}\\[2cm]
 			\begin{figure}[h]
 				\begin{minipage}{0.5\textwidth}
 					\centering
-					\includegraphics[width=4cm]{img/minesNantes.png}   
+					\includegraphics[width=4cm]{img/minesNantes.png}
 				\end{minipage}%
 				\begin{minipage}{0.5\textwidth}
 					\centering
-					\includegraphics[width=4cm]{img/itii.jpg}  
+					\includegraphics[width=4cm]{img/itii.jpg}
 				\end{minipage}
 			\end{figure}
 
@@ -139,8 +161,14 @@
 \section*{\textbf{Introduction}}
 \label{sect:Introduction}
 \addcontentsline{toc}{section}{\textbf{Introduction}}
-\input{introduction}
+\input{introduction/fr}
 
+\cleardoublepage
+\setcounter{page}{1}
+\section*{\textbf{Abstract}}
+\label{sect:Abstract}
+\addcontentsline{toc}{section}{\textbf{Abstract}}
+\input{introduction/en}
 
 \part{L'entreprise et le contexte du projet}
 
@@ -160,76 +188,104 @@
         	\input{1-presentation/1.4-positionement}
 
     \chapter{Le contexte de la mission}
-        \input{2-travaux/2.0-travaux}
+        \input{2-contexte/2.0-contexte}
 
         \section{Le Zenboard}
-        	\input{2-travaux/2.1-zenboard}
+        	\input{2-contexte/2.1-zenboard}
 
         \section{Devfest 2016 : Première expérimentation }
-            \input{2-travaux/2.1-tma}
+            \input{2-contexte/2.2-experimentation}
 
         \section{Fusion avec le projet MARCEL}
-            \input{2-travaux/2.3-mec}
+            \input{2-contexte/2.3-marcel}
 
-        \section{Les risques et attentes}
+        \section{Les attentes et risques}
+            \input{2-contexte/2.4-risques}
 
 \part{Le projet}
 
     \chapter{Étude et conception}
+    	\input{3-etude/3.0-etude}
+        
+       	\section{Recueil du besoin et objectifs}
+        	\input{3-etude/3.1-besoin}
 
         \section{Recherche des solutions existantes}
+        	\input{3-etude/3.2-existant}
 
         \section{Choix des technologies}
+        	\input{3-etude/3.3-technologies}
 
         \section{Architecture de l'application}
+        	\input{3-etude/3.4-architecture}
 
     \chapter{Organisation du projet}
+    	\input{4-organisation/4.0-organisation}
 
         \section{L'agilité}
+    		\input{4-organisation/4.1-agilite}
 
         \section{Le travail à distance}
+    		\input{4-organisation/4.2-distance}
 
         \section{L'organisation par la relecture de code}
+    		\input{4-organisation/4.3-relecture}
 
     \chapter{Le model économique}
+    	\input{5-economie/5.0-economie}
 
         \section{L'open source}
+    		\input{5-economie/5.1-opensource}
 
         \section{Le model SasS}
+    		\input{5-economie/5.2-saas}
 
         \section{Le model physique}
+    		\input{5-economie/5.3-physique}
 
 \part{Questionement scientifique}
 
 	\chapter{La problématique}
+    	\input{6-problematique/6.0-problematique}
     
    	\chapter{L'histoire des application monopage}
+    	\input{7-histoire/7.0-histoire}
     
     	\section{Les sites multipages}
+    		\input{7-histoire/7.1-multipage}
         
         \section{Les applications web dynamique}
+    		\input{7-histoire/7.2-dynamique}
         
         \section{Les applications web monopage}
+    		\input{7-histoire/7.3-monopage}
         
         \section{Le cloud et les microservices}
+    		\input{7-histoire/7.4-microservice}
         
 	\chapter{Analyse des solutions existante}
+    	\input{8-existant/8.0-existant}
     	
-        \section{Les paradigmes de programation}
+        \section{Les paradigmes de programmation}
+    		\input{8-existant/8.1-paradigmes}
         
         \section{Les technologies}
+    		\input{8-existant/8.2-technologies}
         
         \section{Les architectures technique}
+    		\input{8-existant/8.3-architectures}
         
     \chapter{Proposition d'architecture}
+    	\input{9-proposition/9.0-proposition}
     
     	\section{Quelle architecture technique ?}
+    		\input{9-proposition/9.1-architecture}
     
     	\section{Quel paradigme ?}
+    		\input{9-proposition/9.2-paradigme}
         
         \section{Quelle technologie ?}
-
-
+    		\input{9-proposition/9.3-technologie}
 
 \cleardoublepage
 \vfill
@@ -237,20 +293,22 @@
 \section*{\textbf{Conclusion}}
 \label{sect:Conclusion}
 \addcontentsline{toc}{section}{Conclusion}
-
 \input{conclusion}
 
-%\cleardoublepage
-%\label{sect:Glossaire}
-%\addcontentsline{toc}{section}{Glossaire}
-%\printglossaries
+\cleardoublepage
+\label{sect:Glossaire}
+\addcontentsline{toc}{section}{Glossaire}
+\printglossaries
 
-%\cleardoublepage
-%\section*{\textbf{Bibliographie et Webographie}}
-%\label{sect:Webographie}
-%\addcontentsline{toc}{section}{Bibliographie et Webographie}
-%\input{webographie}
+\cleardoublepage
+\section*{\textbf{Bibliographie et Webographie}}
+\label{sect:Webographie}
+\addcontentsline{toc}{section}{Bibliographie et Webographie}
+\input{webographie}
 
+\cleardoublepage
+\label{sect:Table des figures}
+\addcontentsline{toc}{section}{Table des figures}
 \listoffigures
 
 \clearpage

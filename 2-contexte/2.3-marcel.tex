@@ -1,0 +1,54 @@
+Durant la phase d'étude et de recueil du besoin\footnotemark, il est apparu qu'une autre agence de Zenika développais un projet similaire au Zenboard.\\
+
+\footnotetext{Une description approfondie de cette phase est présente dans la seconde partie de ce rapport}
+
+\subsection{MARIE : L'agence connectée et pilotée}
+
+L'agence de Lille développe depuis sa création il y a 3 ans le projet de mettre en place des locaux entièrement connectés. Il se nomme MARIE\footnote{Module d'Administration Régissant les Interfaces Electroniques} et doit permettre de régir les différents objets connectés dispersés dans l'agence. Cela peut aller d'une sonde de température à la gestion de la lumière en passant par le machine à café. MARIE se base sur une gestion des \glspl{ontologies des objets} et sur une notion d'\glspl{objets virtuels}.
+
+Le projet s'est vraiment concrétisé il y a un an quand l'équipe lilloise a commencé la fabrication de quelques objets connectés. Par exemple, l'agence est éuqipé d'un capteur d'humidité et de température, d'une enceinte connecté ou encore d'une cible de fléchette changeant la musique lorsque l'on joue. Cela étant, le véritable développement de MARIE commence au moment même ou j'écris ses lignes.
+
+\subsection{MARCEL : Le miroir connecté}
+
+TODO: INTEGRER UNE PHOTO DU DASHBOARD
+
+C'est dans ce projet de locaux connectés que s'inscrit MARCEL\footnote{Miroir À Reflet Connecté Et Ludique}. Il est né du regroupement de 2 consultants qui avaient développé sur leur temps libre un miroir connecté et qui ont décidé de les fusionner pour en créer un projet pour l'entreprise. Le but est de proposer un affichage de différentes informations sur l'agence et son environnement sous la forme d'un miroir placé à l'entrée de l'agence. Il peut par exemple afficher la météo, la température au sein de l'agence ou encore la disponibilité des vélos libre-service de Lille autour des locaux.
+
+Il s'agit d'un miroir sans tain derrière lequel un écran est placé et relié à un Raspberry Pi\footnotemark. La surface reste donc réfléchissante tout en laissant passer la lumière de l'écran. Il s'agit donc d'un objet connecté qui sera géré par MARIE. C'est également de MARIE qu'il recevra les données des autres objets connectés de l'agence. Il peut également envoyer des instructions via une commande vocale. C'est finalement une sorte de panneau de contrôle de l'agence.
+
+\footnotetext{Un Raspberry Pi est un micro-ordinateur de faible puissance. Il est très utilisé dans le monde du "fait maison" de raison de son faible prix (~50€) et sa taille très réduite ($5 cm^2$). Il n'est pas très puissant, mais suffit pour une utilisation courante (Web, Bureautique, Vidéo ...) sous Linux.}
+
+Si la première version de MARCEL fonctionne et propose déjà d'afficher diverses informations sur le miroir, son utilisation n'est toute fois pas aisée. Le déploiement de la solution est complexe et non documenté. Il est impossible de changer la disposition des informations affichées ni d'ajouter de nouvelles sources de données facilement. Il faut pour cela obligatoirement passer par une compilation de l'application et de tous ses composants.
+
+\subsection{MARCEL 2.0 : Le miroir connecté modulaire et configurable}
+
+Cette année, un sujet de stage a été proposé pour remanier entièrement le projet MARCEL. Le but est d'obtenir un affichage configurable et modulaire. Chaque information serait alors affichée par un plug-in et sa position pourra être configuré dans un fichier de configuration. Il suffira alors d'ajouter les plug-ins souhaités, de modifier le fichier de configuration et de relancer l'application pour voir les changements pris en compte.
+
+Le comportement attendu pour cette nouvelle version est en réalité très proche de celui du Zenboard. C'est ce que nous avons pu constater à la fin de la phase d'étude et de recherche pour le Zenboard.
+
+\subsection{Des doublons dans les projets}
+
+C'est un point qui n'a pas manqué de me surprendre: comment deux sujets de stages aussi similaires ont pu être proposés sans que cela soit relevé ?
+
+Ce doublon de sujet a été relevé grâce à mon tuteur d'apprentissage qui a demandé si l'idée du Zenboard intéressait d'autres agences. Sans cela, les deux projets auraient très bien pus être développés en parallèle.
+\subsubsection{La liberté d'organisation}
+
+En réalité, si chaque agence appartient au groupe Zenika, elle possède tout de même une très grande liberté quand à son activité et son organisation. Nous sommes liés par une vision, une stratégie et une passion commune, mais la façon de l'appliqué est laissé à la discrétion de chacun. La hiérarchie et la structure des agences sont définis par le groupe, mais pour le reste, chaque agence peu redéfinir ses propres processus et sa propre organisation. Par exemple, à Nantes, le recrutement est différent de celui du reste du groupe. Il se passe en 3 entretiens pour que le candidat s'entretienne avec le directeur d'agence (le manager), deux consultants et le directeur technique nantais. La sélection est en plus très stricte puisque seul 5\% (sur plus de 150) des personnes ayant passé les trois entretiens sont effectivement embauchés.
+
+\subsubsection{La liberté d'entreprendre}
+
+Cela découle d'une volonté assumée du président général de laisser le maximum de libertés aux individus. Le groupe peut ainsi se nourrir des idées de chacune des agences tandis que les agences profitent des services supports du groupe. Cette volonté se ressent également beaucoup au niveau des consultants. Tout le monde a le droit d'apporter une idée ou un projet, proposer une amélioration dans l'organisation, ou tout simplement émettre une critique ou son mécontentement. C'est un cadre de travail très humain et organique qui est propice au développement d'un fourmillement de projets internes.
+
+\subsubsection{Le chaos organisé}
+
+L'un des désagréments de cette ouverture d'esprit est en revanche une difficulté pour avoir une vision des projets propres à chaque agence. La vision des projets va en effet dépendre de la volonté de son créateur de le faire connaître au reste du groupe. Il peut par exemple considérer que son projet ne vaut pas encore la peine d'être montré ou tout simplement ne pas avoir le temps de gérer cette communication chronophage dans un emploi du temps déjà chargé.
+
+C'est d'ailleurs en partie pour tenter de faciliter cette communication interagence que le projet Zenboard est né. Cela fait partie des objectifs à long terme du projet. C'est également, pour moi, ce qui explique l’enthousiasme que l'on observe aujourd'hui autour des dashboards et plus généralement de la \textit{Data visualization}. 
+
+\subsubsection{La productivité par l'information et la motivation}
+
+Les entreprises grossissent et se complexifie, les niveaux de hiérarchie se multiplient, les distances entre les collaborateurs s'allongent, les acteurs se multiplient. Il y a donc aujourd'hui un enjeu de plus en plus grand de communication afin de faire redescendre l'information à tous les employés de l'entreprise. C'est un besoin né de la demande de transparence face à l'opacité de la hiérarchie, mais aussi par une volonté des directions d'impliquer les employer.
+
+En effet, le management par la carotte et le bâton a fait son temps. Nous savons maintenant que les facteurs les plus déterminants dans la productivité sont le bien-être et la motivation (puisque l'un va rarement sans l'autre). C'est pourquoi il est aujourd'hui important d'impliquer les employés, les responsabiliser, leur rendre leur individualité et leur donner les clefs pour qu'il puisse, par eux-mêmes, trouver la motivation qui leur est nécessaire.
+
+\clearpage
