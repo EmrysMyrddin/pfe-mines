@@ -1,3 +1,54 @@
 \label{sec:3.1-besoin}
 
-La définition du besoin est une étape très importante dans la vie du projet puisqu'elle va définir les objectifs à cours termes et l'orientation du développement. 
+La définition du besoin est une étape très importante dans la vie du projet puisqu'elle va définir les objectifs à cours termes et l'orientation du développement.
+
+Pour cela, un document à été créer\footnote{cf. Annexe A} définissant les différentes fonctionnalité voulues mais surtout le vocabulaire qui sera utiliser pour identifier les différentes partie du système. C'est ce document que nous avons ensuite raffiner avec l'équipe lilloise pour incorporer leur propres besoin.
+
+\subsection{Les Médias}
+
+  Un dashboard est un écran qui permet d'afficher des informations. C'est ce qui est afficher sur une télévision. Il à été décidé conjointement avec Lille de renomer ce composant en Media pour clarifier le faites que MARCEL ne sert pas forcément qu'a afficher des chiffres et des courbes mais toute sorte de médias.
+
+  Il est consituer d'une grille sur laquelle sont affichés des plug-ins définits par l'utilisateur. Un Media contient la liste de se plug-ins et de leur configuration. Chaque utilisatuer pour alors créer autant de Media qu'il souhaite.
+
+\subsection{Les Plug-ins}
+
+  Un plug-in permet d'afficher des information sur un media. Il porte un nom unique qui l'identifie et un cerains nombre de propriétés que l'utilisateur peut paramétrer pour définir le comportement du Plug-in. La liste de ces propriétés et leur rôles est totalement libre et est définit par le développeur du plug-in.
+
+  Chaque plug-in est composé de deux parties distincts, une partie graphique (front-end) et une partie serveur (back-end)
+
+  \subsubsection{Partie \gls{front-end}}
+
+    Il s'agit de l'interface graphique du plugin. C'est la brique visuel qui sera affiché par le Media. Il possède une taille et une position sur la grille en plus des propriétés définit par le développeur. Cette partie est obligatoirement réalisé en Javascript et exécuté par le navigateur du client, certaines tâche sont donc impossibles à réalisé, comme la connection à une base de donnée par exemple.
+
+  \subsubsection{Partie \gls{back-end}}
+
+    Il s'agit d'un programme qui sera exécuté en tache de fond sur le serveur de MARCEL. Elle n'est pas obligatoire, beaucoup de plug-ins n'en aurons pas besoin. Son but est de palier aux limitations du navigateur et permettre au plug-in d'éxécuter n'importe quel programme. Il est donc possible de créer un programme se connectant à une base donnée et renvoyant au front-end les informations dont il à besoin. Cette partie peut être réaliser dans n'importe quelle technologie. La seule limitation êtant que les fonctions doivent être exposé par une \gls{API web} contenue dans un \gls{conteneur} \gls{docker}.
+
+  \subsubsection{Les conteneurs}
+
+    Il s'agit d'un type spécial de plug-in. Un plug-in devient un conteneur lorsqu'il possède au moins une propriété qui contient une liste de plug-ins. Les sous plug-ins ne serons alors pas affiché par le Media directement mais par le conteneur. Cela permet à dévelopeur d'avoir un contrôle sur l'affichage des plug-ins. Quelques exemples de conteneurs de base ont déjà été définit et serons livré avec MARCEL :
+
+    \begin{itemize}
+      \item{Rotation Container : Le conteneur de rotation permet d'afficher des plug-ins à tour de rôle. L'utilisateur poura définir un temps d'affichage, par exmeple 30 secondes, et une liste de plug-ins. Le conteneur affichera alors chaque plug-ins de liste pendant 30 secondes avant d'afficher le suivant.}
+      \item{Conditional Container: Le contenur à condition permet d'afficher un plug-in celon certaines conditions. Un utilisateur pourra par exemple fournir deux plug-ins et indiquer une condition. Le conteneur affichera alors un plugin si la condition est vrai et l'autre si la condition est fausse.}
+    \end{itemize}
+
+\subsection{Le providers}
+
+  Lorsque nous avons commencer à réfléchir aux diférents plug-ins qu'il serais interessant de devellopper, nous sommes vite arrivé à la conclusion que certaines partie du code allais être dupliqué un grand nombre de fois. Par exemple, si un utilisateur veux créer un Media lui permettant de suivre l'évolution de son compte twiter. Il voudra créer plusieurs plug-ins pour afficher ses derniers tweets, ses dernière mentions, les tweets de ses abonnements etc... Seuleument il sera obliger de réecrir le code permettant d'accéder à l'\gls{API} et sera obliger de configurer chaque plug-in avec ses informations de connexions.
+
+  Les providers servent à résoudre ce problème. Ce sont des programme qui serons exécutés sur le serveur de MARCEL à l'instar des back-end des plug-ins mais pouront être appelés par n'importe quel front-end.
+
+  Dans notre exemple, le developpeur pourra créer un provider donnant accès à l'\gls{API} de twitter. Ainsi, tout les plug-ins interrogerons ce provider et n'auront plus besoin de partie back-end. L'utilisateur n'aurra qu'a installer le provider sur son Media.
+
+  À terme, un utilisateur pourra définir des providers sur son compte et ensuite lié ceux-ci aux Media qui en ont besoin. Cela permet de facilité d'autant plus l'utilisation du système en facorisant au maximum les configurations.
+
+\subsection{Le Back-office}
+
+  Il s'agit de l'interface de gestion du système. C'est à partir de cette interface qu'un utilisateur pour créer et configurer des Media via un éditeur graphique. Il poura également enregistrer des nouveaux plug-ins ou de nouveaux providers. Il poura également gérer les droits d'accès aux différent Medias qu'il aura créer et les partagés aux autres utilisateurs du système.
+
+  C'est sur cette brique que porte ma missions de projet de fin d'étude. C'est en effet la principale différence avec les solutions existante que nous détaillerons dans la prochaine section. D'autre projet permettent déjà de créer des dashboard mais aucun ne propose à la fois une grande liberté de personalisation et un outil de création graphique simple et ergonomique.
+
+  La simplicité et l'ergonomie sont d'ailleurs deux de points les plus importants du projet. L'expérience utilisateur devra être soignée et devra être la plus intuitive possible pour que toute personnes, quelque soit son bagage technique, puisse utiliser le logiciel. Le second point d'attention devra être à l'expérience de développeur. Le developpement de plug-in devra être simple et agréable à prendre en main. Cela à pour but de pousser au maximum le developpement de plug-in par la comunauté.
+
+  En effet, la réussite de la plateforme sera conditioné par la diversité de son offre de plug-in. On peu voir un exemple de ce phénomème avec les deux \glspl{framework} mobiles concurent Cordova et React Native. Cordova à été le premier et la comunauté à developper une collection de plug-in plétorique. À l'inverse, React Native est arrivé plus tard et ne possède encore aujourd'hui que très peu de plug-in compatibles. C'est ce qui freinne énormément sont addoption qui est aujourd'hui surtout possée par la grande popularité de la bibliothèque React de la quelle React Native découle.
