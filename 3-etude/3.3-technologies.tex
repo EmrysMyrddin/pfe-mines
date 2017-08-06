@@ -18,9 +18,9 @@ Chaque briques à ses propres besoin et donc nécéssiterons différentes techno
 
   Le back-end devra pouvoir gérer une grande quantité de conteneur docker (pour les back-ends de plug-ins et les providers). Il devra également exposer une \gls{API} \gls{REST} qui permettra de manipuler les Medias et les plug-ins.
 
-  La technologie choisie à donc été le langage \gls{Go} et la suite de bibliothèque \gls{Mux}. Go est un nouveau langage créé par Google et à nottamenent servis pour créer \gls{Docker}. Il facilite la programtion système et nottamenent concurenciel grâce à une gestion très simplifier des processus légés. Il est également très simplist dans le sens ou les dévelopeur ont volontairement réduis le nombre de fonctionalité pour rendre le langage facil d'accès mais également excessivement performant.
+  La technologie choisie à donc été le langage \gls{Go} et la suite de bibliothèque \gls{Mux}. Go est un nouveau langage créé par Google et à nottamenent servis pour créer \gls{docker}. Il facilite la programtion système et nottamenent concurenciel grâce à une gestion très simplifier des processus légés. Il est également très simplist dans le sens ou les dévelopeur ont volontairement réduis le nombre de fonctionalité pour rendre le langage facil d'accès mais également excessivement performant.
 
-  Le choix de Go est principalement basé sur la qualité de son \gls{API} pour politer \gls{Docker} et sa capacité à simplifier la programation système. En effet, le back-end devra gérer un ensemble de conteneurs et leur cycle de vie mais également la comunication entre ces conteneurs et les plug-ins affichés par les Medias. Cette tâche peu s'avéré très complexe mais le système de canaux de comunication de Go simplififera grandement le programme.
+  Le choix de Go est principalement basé sur la qualité de son \gls{API} pour politer \gls{docker} et sa capacité à simplifier la programation système. En effet, le back-end devra gérer un ensemble de conteneurs et leur cycle de vie mais également la comunication entre ces conteneurs et les plug-ins affichés par les Medias. Cette tâche peu s'avéré très complexe mais le système de canaux de comunication de Go simplififera grandement le programme.
 
   Faire ce projet en Go permet également d'avoir l'avoir l'expérience d'un projet en réell developpé dans se langage au seins de l'entreprise. Zenika à pour but de rester à la pointe de la technologie, ce projet est donc une occasion de tester cette technolgie avec un risque très modéré pour l'entreprise (cf. \fullref{sec:risques}).
 
@@ -28,7 +28,7 @@ Chaque briques à ses propres besoin et donc nécéssiterons différentes techno
 
   La principale fonctionalité du back-office est son éditeur graphique de Media. C'est la partie qui sera la plus complexe et qui devra être la plus egronomique et facilement utilisable. Pour cela, une application web monopage semble être la meilleur solution. En effet, il semnle illusoire aujourd'hui de proposer une application lourde à installer sur l'ordinateur du client.
 
-  Pour réaliser une application monopage, il existe un certains nombres de \glspl{framwork} différents qui fonctionent chacun avec un paradigme différent. Vous trouverez une présentation détaillé de ces framework et de leur différences dans le \fullref{sec:monopage}.
+  Pour réaliser une application monopage, il existe un certains nombres de \glspl{framework} différents qui fonctionent chacun avec un paradigme différent. Vous trouverez une présentation détaillé de ces \glsplframework et de leur différences dans le \fullref{sec:monopage}.
 
   Pour le backend, le choix s'est porté sur React pour la gestion de l'affichage et Redux pour la gestion de l'état de l'application. Le langage utilisé est Javascript bien qu'il à été décider d'également utiliser un système de typage : Flow.
 
