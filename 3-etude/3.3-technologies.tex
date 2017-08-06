@@ -1,0 +1,37 @@
+Le projet est essentielement constituée de trois briques distinctes : Le front-end qui affiche les Medias, le back-end qui expose un \gls{service web} pour gérer les Medias et les plug-ins, le back-office qui permet d'éditer les Media et configurer les plug-ins graphiquement.
+
+Chaque briques à ses propres besoin et donc nécéssiterons différentes technologie. Même si ma mission ne portera que sur la réalisation du back-office, j'ai participer aux choix technologiques des autres briques. En effet, chaque developpeur sur le projet pourra être amener au cours de developpement d'intervenir sur toutes le briques logiciels. Il est donc important que tout le monde participe à cette discution.
+
+\subsection{Le front-end}
+
+  Comme nous l'avons vu dans la section précédente, le framework mozaik était très prometteur. La solution n'a toute fois pas été retenu car il semblais complexe de pouvoir charger à la volée des plugins ou la configuration du Media (la disposition des plug-ins à l'écran).
+
+  Il a donc fallu trouver une technologie permettant de charger dynamiquement des composant graphique et la configuration du Media à afficher. Après avoir étudier les \glspl{framework} détaillés dans la section précédente, il est apparu que nous aurons besoin de créer notre propre solution pour l'affichage d'un Media.
+
+  Nous avons avons finalement opté pour \gls{Polymer}. Il s'agit d'un \gls{polyfill}\footnotemark permettant d'implémenter le standard HTML5 de composant web. Ce standard est toujours à l'étude et n'est pas encore en version finale, ce qui explique que les navigateurs ne l'ont pas encore implémenté. Cependant, la norme est très avancé et sera bientot fixée. C'est pourquoi un groupe de dévelopeur à décider de créer le projet \gls{Polymer} pour d'ors et déjà pouvoir utilisé les composant web.
+
+  \footnotetext{Un programme permettant d'ajouter des fonctions Javascript dans un navigateur. Cela estr très utilisé pour rendre d'ancien navigateur compatible avec les nouvelles fonctions des navigateurs modernes.}
+
+  Le gros avantage de ce standard est qu'il propose nativement de charger à la demande des morceau d'interface. C'est exactement la fonctionalité qui nous était nécéssaire pour charger les plug-ins. Nous n'avons donc plus qu'a implémenter nous-même le chargement de la configuration des Medias.
+
+\subsection{Le back-end}
+
+  Le back-end devra pouvoir gérer une grande quantité de conteneur docker (pour les back-ends de plug-ins et les providers). Il devra également exposer une \gls{API} \gls{REST} qui permettra de manipuler les Medias et les plug-ins.
+
+  La technologie choisie à donc été le langage \gls{Go} et la suite de bibliothèque \gls{Mux}. Go est un nouveau langage créé par Google et à nottamenent servis pour créer \gls{Docker}. Il facilite la programtion système et nottamenent concurenciel grâce à une gestion très simplifier des processus légés. Il est également très simplist dans le sens ou les dévelopeur ont volontairement réduis le nombre de fonctionalité pour rendre le langage facil d'accès mais également excessivement performant.
+
+  Le choix de Go est principalement basé sur la qualité de son \gls{API} pour politer \gls{Docker} et sa capacité à simplifier la programation système. En effet, le back-end devra gérer un ensemble de conteneurs et leur cycle de vie mais également la comunication entre ces conteneurs et les plug-ins affichés par les Medias. Cette tâche peu s'avéré très complexe mais le système de canaux de comunication de Go simplififera grandement le programme.
+
+  Faire ce projet en Go permet également d'avoir l'avoir l'expérience d'un projet en réell developpé dans se langage au seins de l'entreprise. Zenika à pour but de rester à la pointe de la technologie, ce projet est donc une occasion de tester cette technolgie avec un risque très modéré pour l'entreprise (cf. \fullref{sec:risques}).
+
+\subsection{Le back-office}
+
+  La principale fonctionalité du back-office est son éditeur graphique de Media. C'est la partie qui sera la plus complexe et qui devra être la plus egronomique et facilement utilisable. Pour cela, une application web monopage semble être la meilleur solution. En effet, il semnle illusoire aujourd'hui de proposer une application lourde à installer sur l'ordinateur du client.
+
+  Pour réaliser une application monopage, il existe un certains nombres de \glspl{framwork} différents qui fonctionent chacun avec un paradigme différent. Vous trouverez une présentation détaillé de ces framework et de leur différences dans le \fullref{sec:monopage}.
+
+  Pour le backend, le choix s'est porté sur React pour la gestion de l'affichage et Redux pour la gestion de l'état de l'application. Le langage utilisé est Javascript bien qu'il à été décider d'également utiliser un système de typage : Flow.
+
+  Le monde des technologies front-end (éxécuter sur le navigateur) migre doucement vers des technologies de plus en plus outilés. Il est aujourd'hui courrant de \gls{compiler} le code \gls{Javascript} mais ce n'est pas tout. Des système de typages commencent également à apparaître comme le célèbre \gls{Typescript} de Microsoft. Flow est developpé conjointement avec l'équipe de développement de React, nous avons donc décider d'essayer cette technologie. Cela permet également encore une fois de tester ce système inconnue de l'entreprise dans un projet avec un risque minimal
+
+  Vous trouverez de plus en amples explications sur les choix technologiques du back-office dans le \fullref{sec:monopage-solution}.
